@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 13.7016
+height = 22.3836
+
+[node name="Player" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Bullet = ExtResource( 2 )
+fire_rate = 0.2
+speed = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Polygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( -0.536381, -24.9787, -7.86853, -21.3126, -9.65894, -17.9023, -9.91471, -14.2362, -8.63585, -11.5932, -6.07813, -9.37654, -5.65184, -7.58612, -6.24864, -6.13675, -7.69802, -4.68737, -9.82946, -1.95913, -11.0231, 0.257572, -11.3641, 2.2185, -11.7051, 4.77623, -11.5346, 9.38014, -11.6199, 13.302, -11.1083, 16.7123, -10.1705, 19.7816, -6.24864, 22.3393, -3.26462, 24.3855, 0.316196, 24.7265, 3.55598, 23.8739, 5.17588, 22.6803, 6.79578, 21.4015, 8.92722, 19.27, 10.3766, 17.2238, 11.5702, 15.0071, 12.7638, 12.2789, 13.0196, 10.7443, 12.8491, 7.41921, 12.8491, 4.09417, 13.1901, 1.11015, 11.7407, -1.87387, 9.9503, -4.00531, 7.90412, -5.45469, 6.28423, -5.96623, 5.09062, -6.81881, 4.9201, -8.18293, 6.02846, -9.63231, 8.07464, -11.508, 9.60928, -14.151, 9.01247, -17.476, 6.96629, -19.8632, 5.00536, -22.4209, 1.25403, -24.1261 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="ShootTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+
+

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Bullet.gd" type="Script" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -0.00452757, 2.91145, -0.795597, -1.22085, -0.629056, -1.8766, 0.0162902, -2.55318, 0.609592, -2.03274, 0.869812, -1.2833 )
+
+[node name="Bullet" type="Area2D"]
+
+position = Vector2( -0.101068, 0.274562 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+speed = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0, 0.0321722 )
+scale = Vector2( 5, 5 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+
+scale = Vector2( 5, 5 )
+polygon = PoolVector2Array( -0.00452757, 2.91145, -0.459625, 0.534161, -0.795597, -1.22085, -0.629056, -1.8766, 0.0162902, -2.55318, 0.609592, -2.03274, 0.869812, -1.2833 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+
