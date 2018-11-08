@@ -3,11 +3,11 @@ extends KinematicBody2D
 export (PackedScene) var Bullet
 export (float) var fire_rate
 export (float) var speed
-var hp
-var stamina
-var movement
+var hp = 100
+var stamina = 100
+var movement = Vector2()
+var mouse_pos = Vector2()
 var can_shoot
-var circle
 
 func _ready():
 	can_shoot = true
@@ -15,7 +15,7 @@ func _ready():
 
 func get_input():
 	movement = Vector2()
-	var mouse_pos = get_viewport().get_mouse_position() - global_position
+	mouse_pos = get_viewport().get_mouse_position() - global_position
 	if Input.is_key_pressed(KEY_W):
 		movement.y -= 1
 	if Input.is_key_pressed(KEY_D):
@@ -59,7 +59,7 @@ func get_input():
 func shoot(pos):
 	var bullet = Bullet.instance()
 	var direction = (pos - global_position).angle() + rand_range(-0.1, 0.1)
-	bullet.start(global_position, direction)
+	bullet.start(global_position + mouse_pos.normalized() * 35, direction)
 	get_parent().add_child(bullet)
 	$ShootTimer.start()
 	can_shoot = false
