@@ -1,16 +1,28 @@
 extends KinematicBody2D
 
 export (PackedScene) var Bullet
-export (float) var fire_rate
-export (float) var speed
+
+var id = "player"
 var hp = 100
-var stamina = 100
+var max_hp = 100
+var stamina = 75
+var max_stamina = 75
+var d_stamina = 0
+var fire_rate = 0.2
+var def_speed = 400
+var speed_factor = 1.5
+var t_speed_factor = 0.5
+var speed = def_speed
 var movement = Vector2()
 var mouse_pos = Vector2()
 var can_shoot
+var is_running
+var tired
 
 func _ready():
 	can_shoot = true
+	is_running = false
+	tired = false
 	$ShootTimer.wait_time = fire_rate
 
 func get_input():
@@ -27,6 +39,12 @@ func get_input():
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if can_shoot:
 			shoot(get_viewport().get_mouse_position())
+	if Input.is_key_pressed(KEY_SHIFT):
+		if not tired:
+			is_running = true
+			d_stamina -= 1
+	if not Input.is_key_pressed(KEY_SHIFT):
+		is_running = false
 	
 	movement = movement.normalized() * speed
 	
@@ -66,8 +84,22 @@ func shoot(pos):
 
 func _physics_process(delta):
 	get_input()
+	stamina += d_stamina * delta * 20
+	d_stamina = 0
+	if is_running:
+		speed = def_speed * speed_factor
+	if stamina < 0:
+		stamina = 0
+		tired = true
+	if stamina >= max_stamina:
+		stamina = max_stamina
+		tired = false
+	if tired:
+		speed = def_speed * t_speed_factor
+	elif not tired and not is_running:
+		speed = def_speed
+	stamina += delta * 5
 	movement = move_and_slide(movement)
-	print(get_viewport().get_mouse_position().y)
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
