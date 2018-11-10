@@ -12,5 +12,6 @@ func _on_Area2D_body_entered(body):
 			is_healing = true
 
 func _process(delta):
-	if player and is_healing and hospital_health + player.max_hp * 0.75 <= player.max_hp * 0.75:
+	if player and is_healing and hospital_health <= player.max_hp * 0.75:
+		hospital_health += heal_factor * delta
 		player.hp = min(player.hp + heal_factor * delta, player.max_hp)
