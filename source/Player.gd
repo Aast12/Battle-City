@@ -2,24 +2,29 @@ extends KinematicBody2D
 
 export (PackedScene) var Bullet
 
-var id = "player"
-var hp = 100
+const id = "player"
 var max_hp = 100
-var stamina = 75
 var max_stamina = 75
-var d_stamina = 0
 var fire_rate = 0.2
 var def_speed = 400
 var speed_factor = 1.5
 var t_speed_factor = 0.5
-var speed = def_speed
-var movement = Vector2()
-var mouse_pos = Vector2()
+var hp
+var stamina
+var d_stamina
+var speed
+var movement
+var mouse_pos
 var can_shoot
 var is_running
 var tired
 
 func _ready():
+	hp = max_hp
+	stamina = max_stamina
+	d_stamina = 0
+	speed = def_speed
+	mouse_pos = Vector2()
 	can_shoot = true
 	is_running = false
 	tired = false
@@ -27,7 +32,7 @@ func _ready():
 
 func get_input():
 	movement = Vector2()
-	mouse_pos = get_viewport().get_mouse_position() - global_position
+	mouse_pos = $Camera2d.get_global_mouse_position() - global_position
 	if Input.is_key_pressed(KEY_W):
 		movement.y -= 1
 	if Input.is_key_pressed(KEY_D):
@@ -38,7 +43,7 @@ func get_input():
 		movement.x -= 1
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if can_shoot:
-			shoot(get_viewport().get_mouse_position())
+			shoot($Camera2d.get_global_mouse_position())
 	if Input.is_key_pressed(KEY_SHIFT):
 		if not tired:
 			is_running = true
