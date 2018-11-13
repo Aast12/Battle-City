@@ -2,21 +2,21 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/left.png" type="Texture" id=3]
+[ext_resource path="res://Art/up.png" type="Texture" id=3]
 [ext_resource path="res://Art/right.png" type="Texture" id=4]
-[ext_resource path="res://Art/up.png" type="Texture" id=5]
-[ext_resource path="res://Art/down.png" type="Texture" id=6]
-[ext_resource path="res://Art/up_right.png" type="Texture" id=7]
+[ext_resource path="res://Art/left.png" type="Texture" id=5]
+[ext_resource path="res://Art/up_left.png" type="Texture" id=6]
+[ext_resource path="res://Art/down_left.png" type="Texture" id=7]
 [ext_resource path="res://Art/down_right.png" type="Texture" id=8]
-[ext_resource path="res://Art/up_left.png" type="Texture" id=9]
-[ext_resource path="res://Art/down_left.png" type="Texture" id=10]
+[ext_resource path="res://Art/up_right.png" type="Texture" id=9]
+[ext_resource path="res://Art/down.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "left",
+"name": "up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -26,17 +26,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "up",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "down",
+"name": "up left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "up right",
+"name": "down left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -46,12 +46,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "up left",
+"name": "up right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "down left",
+"name": "down",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -62,7 +62,7 @@ custom_solver_bias = 0.0
 radius = 13.3921
 height = 33.6816
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 1.13916, -4.41426 )
 input_pickable = false

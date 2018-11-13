@@ -34,7 +34,6 @@ func _on_HurtBox_body_entered(body):
 	if body.id == "player":
 		target = body
 
-
 func _on_AttackTimer_timeout():
 	can_attack = true
 
