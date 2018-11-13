@@ -105,10 +105,10 @@ func _physics_process(delta):
 		speed = def_speed
 	stamina += delta * 5
 	movement = move_and_slide(movement)
-	
+
 func _process(delta):
 	$Camera2d/CanvasLayer/Stamina/StaminaBar.init(stamina)
 	$Camera2d/CanvasLayer/Hp/HpBar.init(hp)
-	
+
 func _on_ShootTimer_timeout():
 	can_shoot = true
