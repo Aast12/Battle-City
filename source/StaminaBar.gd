@@ -12,6 +12,6 @@ func _process(delta):
 
 func init(temp_stamina):
 	stamina = temp_stamina
-	rect = Rect2(Vector2(50,10),Vector2(stamina*10,10))
+	rect = Rect2(Vector2(50,50),Vector2(stamina*10,50))
 	color = Color(1.0,0.0,0.0)
 	update()
