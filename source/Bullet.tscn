@@ -45,4 +45,6 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Transform" ]
 
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+
 

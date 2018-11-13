@@ -13,3 +13,9 @@ func start(pos, direction):
 
 func _physics_process(delta):
 	position += movement * delta
+
+
+func _on_Bullet_body_entered(body):
+	if body.id == "enemy":
+		body.hp -= randi() % 30 + 10
+		queue_free()
