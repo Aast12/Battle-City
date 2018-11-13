@@ -105,6 +105,7 @@ func _physics_process(delta):
 		speed = def_speed
 	stamina += delta * 5
 	movement = move_and_slide(movement)
+	print(hp)
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
