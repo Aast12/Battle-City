@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+var id = "GenericBuilding"
 var player
 var is_healing = false
 var heal_factor = 1
