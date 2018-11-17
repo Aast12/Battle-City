@@ -1,6 +1,7 @@
 extends Node
 
 export (PackedScene) var Enemy
+export (PackedScene) var Building
 
 #var enemies = []
 #var wr = []
@@ -12,6 +13,9 @@ func _ready():
 		enemy.init($Player, enemy_pos)
 		#wr = weakref(enemy)
 		add_child(enemy)
+		
+	var genericBuilding = Building.instance()
+	add_child(genericBuilding)
 
 func _process(delta):
 	pass

@@ -10,10 +10,11 @@
 [ext_resource path="res://Art/down_right.png" type="Texture" id=8]
 [ext_resource path="res://Art/down.png" type="Texture" id=9]
 [ext_resource path="res://Art/up_left.png" type="Texture" id=10]
-[ext_resource path="res://Stamina.gd" type="Script" id=11]
+[ext_resource path="res://stamina.gd" type="Script" id=11]
 [ext_resource path="res://StaminaBar.gd" type="Script" id=12]
 [ext_resource path="res://Hp.gd" type="Script" id=13]
 [ext_resource path="res://HpBar.gd" type="Script" id=14]
+
 
 [sub_resource type="SpriteFrames" id=1]
 
