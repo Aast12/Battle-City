@@ -16,7 +16,7 @@ func _on_Area2D_body_entered(body):
 
 func _process(delta):
 	if player and is_healing:
-		timer.start()
+		$Timer.start()
 		player.fire_rate = player.fire_rate * rate_factor
 		
 
@@ -24,4 +24,4 @@ func _on_Timer_timeout():
 	player.fire_rate = player.fire_rate/rate_factor
 	
 func _ready():
-	$timer.wait_time = 5
+	$Timer.wait_time = 5
