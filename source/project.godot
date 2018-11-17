@@ -10,8 +10,14 @@ config_version=3
 
 [application]
 
-config/name="Edificios"
+config/name="itc-project"
+run/main_scene="res://map.tscn"
+
 config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
 
 [rendering]
 
