@@ -12,6 +12,9 @@ func _ready():
 		enemy.init($Player, enemy_pos)
 		#wr = weakref(enemy)
 		add_child(enemy)
+		#128, 151, 188
+	var night = Color(128.0 / 255, 151.0 / 255, 188.0 / 255, 1)
+	$Player.get_node("Sprite").modulate = night.lightened(0)
 
 func _process(delta):
 	pass

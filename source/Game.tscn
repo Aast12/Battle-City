@@ -12,8 +12,8 @@ Enemy = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 321.231, 245.471 )
-scale = Vector2( 36.921, 32.8924 )
+position = Vector2( 506.541, 299.596 )
+scale = Vector2( 6.3016, 3.80726 )
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." index="1" instance=ExtResource( 4 )]

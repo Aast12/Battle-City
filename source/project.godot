@@ -11,12 +11,16 @@ config_version=3
 [application]
 
 config/name="itc-project"
-run/main_scene="res://map.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/fullscreen=true
+window/handheld/emulate_touchscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/stretch/shrink="1"
 
 [rendering]
 

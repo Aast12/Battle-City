@@ -16,8 +16,11 @@ var speed
 var movement
 var mouse_pos
 var can_shoot
+var is_shooting
 var is_running
 var tired
+var shoot_position
+var add = ''
 
 func _ready():
 	hp = max_hp
@@ -28,6 +31,7 @@ func _ready():
 	can_shoot = true
 	is_running = false
 	tired = false
+	is_shooting = false
 	$ShootTimer.wait_time = fire_rate
 
 func get_input():
@@ -44,6 +48,11 @@ func get_input():
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if can_shoot:
 			shoot($Camera2d.get_global_mouse_position())
+			is_shooting = true
+			add = ' s'
+	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
+		is_shooting = false
+		add = ''
 	if Input.is_key_pressed(KEY_SHIFT):
 		if not tired:
 			is_running = true
@@ -60,37 +69,62 @@ func get_input():
 	
 	if mouse_pos.x > -50 and mouse_pos.x < 50:
 		if mouse_pos.y > 0:
-			$Sprite.animation = "running down"
+			$Sprite.animation = "running down" + add
+			if movement.length() == 0:
+				$Sprite.animation = "down"# + add
+			shoot_position = $SDownPos
 			$Sprite.flip_h = false
 		else:
 			$Sprite.animation = "running up"
+			if movement.length() == 0:
+				$Sprite.animation = "up" #+ add
+			shoot_position = $SUpPos
 			$Sprite.flip_h = false
 	elif mouse_pos.y > -50 and mouse_pos.y < 50:
 		if mouse_pos.x > 0:
-			$Sprite.animation = "running left"
+			$Sprite.animation = "running left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "left" #+ add
+			shoot_position = $SRightPos
 			$Sprite.flip_h = true
 		else:
-			$Sprite.animation = "running left"
+			$Sprite.animation = "running left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "left" #+ add
+			shoot_position = $SLeftPos
 			$Sprite.flip_h = false
 	else:
 		if mouse_pos.x > 0 and mouse_pos.y < 0:
-			$Sprite.animation = "running up left"
+			$Sprite.animation = "running up left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "up left" #+ add
+			shoot_position = $SUpRightPos
 			$Sprite.flip_h = true
 		elif mouse_pos.x > 0 and mouse_pos.y > 0:
-			$Sprite.animation = "running down left"
+			$Sprite.animation = "running down left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "down left"# + add
+			shoot_position = $SDownRightPos
 			$Sprite.flip_h = true
 		elif mouse_pos.x < 0 and mouse_pos.y < 0:
-			$Sprite.animation = "running up left"
+			$Sprite.animation = "running up left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "up left"# + add
+			shoot_position = $SUpLeftPos
 			$Sprite.flip_h = false
 		else:
-			$Sprite.animation = "running down left"
+			$Sprite.animation = "running down left" + add
+			if movement.length() == 0:
+				$Sprite.animation = "down left" #+ add
+			shoot_position = $SDownLeftPos
 			$Sprite.flip_h = false
 
 
 func shoot(pos):
 	var bullet = Bullet.instance()
 	var direction = (pos - global_position).angle() + rand_range(-0.1, 0.1)
-	bullet.start(global_position + mouse_pos.normalized() * 35, direction)
+	#bullet.start(global_position + mouse_pos.normalized() * 35, direction)
+	bullet.start(shoot_position.global_position + mouse_pos.normalized() * 20, direction)
 	get_parent().add_child(bullet)
 	$ShootTimer.start()
 	can_shoot = false
@@ -115,8 +149,9 @@ func _physics_process(delta):
 	movement = move_and_slide(movement)
 
 func _process(delta):
-	$Camera2d/CanvasLayer/Stamina/StaminaBar.init(stamina)
-	$Camera2d/CanvasLayer/Hp/HpBar.init(hp)
+	#$Camera2d/CanvasLayer/Stamina/StaminaBar.init(stamina)
+	#$Camera2d/CanvasLayer/Hp/HpBar.init(hp)
+	pass
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
