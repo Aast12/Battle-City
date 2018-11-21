@@ -12,7 +12,6 @@ config_version=3
 
 config/name="itc-project"
 run/main_scene="res://map.tscn"
-
 config/icon="res://icon.png"
 
 [display]

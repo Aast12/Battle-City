@@ -6,7 +6,7 @@ const id = "player"
 var max_hp = 100
 var max_stamina = 75
 var fire_rate = 0.2
-var def_speed = 400
+var def_speed = 100
 var speed_factor = 1.5
 var t_speed_factor = 0.5
 var hp
@@ -60,23 +60,31 @@ func get_input():
 	
 	if mouse_pos.x > -50 and mouse_pos.x < 50:
 		if mouse_pos.y > 0:
-			$Sprite.animation = "down"
+			$Sprite.animation = "running down"
+			$Sprite.flip_h = false
 		else:
-			$Sprite.animation = "up"
+			$Sprite.animation = "running up"
+			$Sprite.flip_h = false
 	elif mouse_pos.y > -50 and mouse_pos.y < 50:
 		if mouse_pos.x > 0:
-			$Sprite.animation = "right"
+			$Sprite.animation = "running left"
+			$Sprite.flip_h = true
 		else:
-			$Sprite.animation = "left"
+			$Sprite.animation = "running left"
+			$Sprite.flip_h = false
 	else:
 		if mouse_pos.x > 0 and mouse_pos.y < 0:
-			$Sprite.animation = "up right"
+			$Sprite.animation = "running up left"
+			$Sprite.flip_h = true
 		elif mouse_pos.x > 0 and mouse_pos.y > 0:
-			$Sprite.animation = "down right"
+			$Sprite.animation = "running down left"
+			$Sprite.flip_h = true
 		elif mouse_pos.x < 0 and mouse_pos.y < 0:
-			$Sprite.animation = "up left"
+			$Sprite.animation = "running up left"
+			$Sprite.flip_h = false
 		else:
-			$Sprite.animation = "down left"
+			$Sprite.animation = "running down left"
+			$Sprite.flip_h = false
 
 
 func shoot(pos):

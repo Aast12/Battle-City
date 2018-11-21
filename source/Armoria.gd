@@ -21,7 +21,7 @@ func _process(delta):
 		
 
 func _on_Timer_timeout():
-	player.fire_rate = player.fire_rate/rate_factor
+	player.fire_rate = player.fire_rate / rate_factor
 	
 func _ready():
 	$timer.wait_time = 5
