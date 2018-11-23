@@ -1,13 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
+[ext_resource path="res://Building.tscn" type="PackedScene" id=2]
+[ext_resource path="res://verticalStreet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://horizontalStreet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://crossRoad.tscn" type="PackedScene" id=5]
 
 [node name="map" type="Node2D"]
 
 script = ExtResource( 1 )
-width = 75
-height = 75
-player_x = null
-player_y = null
+width = 9
+height = 9
+Building = ExtResource( 2 )
+verticalStreet = ExtResource( 3 )
+horizontalStreet = ExtResource( 4 )
+crossRoad = ExtResource( 5 )
 
 

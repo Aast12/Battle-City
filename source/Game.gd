@@ -36,7 +36,7 @@ func _ready():
 	$HUD/StaBar.max_value = $Player.max_stamina
 	$DayCycle.wait_time = day_time
 	$DayCycle.start()
-	
+
 
 func _process(delta):
 	$HUD/HpBar.value = $Player.hp

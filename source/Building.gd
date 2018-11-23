@@ -1,10 +1,13 @@
 extends StaticBody2D
 
-var id = "GenericBuilding"
+var id = "Build"
 var player
 var is_healing = false
 var heal_factor = 1
 var hospital_health = 0 
+
+func init(pos):
+	position = pos
 
 func _on_Area2D_body_entered(body):	
 	if body.id == "player":

@@ -65,6 +65,7 @@
 [ext_resource path="res://Art/running up left s/sprite_5.png" type="Texture" id=63]
 [ext_resource path="res://Art/down_left.png" type="Texture" id=64]
 
+
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -251,5 +252,3 @@ position = Vector2( -13.6071, 0 )
 position = Vector2( 13.7691, 0 )
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
-
-

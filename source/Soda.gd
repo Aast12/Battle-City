@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var id = "SodaBuilding"
+var id = "Build"
 var player
 var is_healing = false
 var heal_factor = 1
