@@ -151,8 +151,6 @@ func _physics_process(delta):
 	move_and_collide(movement * delta)
 
 func _process(delta):
-	#$Camera2d/CanvasLayer/Stamina/StaminaBar.init(stamina)
-	#$Camera2d/CanvasLayer/Hp/HpBar.init(hp)
 	pass
 
 func _on_ShootTimer_timeout():
