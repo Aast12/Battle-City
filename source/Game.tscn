@@ -1,23 +1,225 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sniper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art/GUI/barBackground.png" type="Texture" id=6]
+[ext_resource path="res://Art/GUI/emptyBar.png" type="Texture" id=7]
+[ext_resource path="res://Art/GUI/hpFill.png" type="Texture" id=8]
+[ext_resource path="res://Art/GUI/staFill.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=10]
 
-[node name="Game" type="Node"]
+[sub_resource type="DynamicFont" id=1]
+
+size = 25
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 10 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Enemy = ExtResource( 2 )
+Sniper = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 506.541, 299.596 )
 scale = Vector2( 6.3016, 3.80726 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
-[node name="Player" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 508.576, 302.655 )
+position = Vector2( 359.283, 208.18 )
+z_index = 1
+_sections_unfolded = [ "Z Index" ]
+
+[node name="DayCycle" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="3"]
+
+color = Color( 1, 1, 1, 1 )
+
+[node name="HUD" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="BarBg" type="NinePatchRect" parent="HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 89.0
+margin_top = 77.0
+margin_right = 439.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+_sections_unfolded = [ "Axis Stretch", "Patch Margin", "Rect" ]
+
+[node name="BarBg2" type="NinePatchRect" parent="HUD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 89.0
+margin_top = 103.0
+margin_right = 439.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+_sections_unfolded = [ "Axis Stretch", "Patch Margin", "Rect" ]
+
+[node name="HpBar" type="TextureProgress" parent="HUD" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 139.0
+margin_top = 77.0
+margin_right = 439.0
+margin_bottom = 97.0
+rect_scale = Vector2( 1, 1.2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="StaBar" type="TextureProgress" parent="HUD" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 139.0
+margin_top = 103.0
+margin_right = 439.0
+margin_bottom = 123.0
+rect_scale = Vector2( 1, 1.2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 9 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="hpLabel" type="Label" parent="HUD" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 89.0
+margin_top = 72.0
+margin_right = 139.0
+margin_bottom = 106.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "HP"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
+
+[node name="StaLabel" type="Label" parent="HUD" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_top = 98.0
+margin_right = 138.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "STA"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
+
+[connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
 
 

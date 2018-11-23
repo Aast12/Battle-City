@@ -6,7 +6,7 @@ const id = "player"
 var max_hp = 100
 var max_stamina = 75
 var fire_rate = 0.2
-var def_speed = 100
+var def_speed = 150
 var speed_factor = 1.5
 var t_speed_factor = 0.5
 var hp
@@ -21,6 +21,7 @@ var is_running
 var tired
 var shoot_position
 var add = ''
+var pushable = false
 
 func _ready():
 	hp = max_hp
@@ -34,7 +35,7 @@ func _ready():
 	is_shooting = false
 	$ShootTimer.wait_time = fire_rate
 
-func get_input():
+func get_input(delta):
 	movement = Vector2()
 	mouse_pos = $Camera2d.get_global_mouse_position() - global_position
 	if Input.is_key_pressed(KEY_W):
@@ -124,13 +125,13 @@ func shoot(pos):
 	var bullet = Bullet.instance()
 	var direction = (pos - global_position).angle() + rand_range(-0.1, 0.1)
 	#bullet.start(global_position + mouse_pos.normalized() * 35, direction)
-	bullet.start(shoot_position.global_position + mouse_pos.normalized() * 20, direction)
+	bullet.start(shoot_position.global_position + mouse_pos.normalized() * 10, direction, id)
 	get_parent().add_child(bullet)
 	$ShootTimer.start()
 	can_shoot = false
 
 func _physics_process(delta):
-	get_input()
+	get_input(delta)
 	stamina += d_stamina * delta * 20
 	d_stamina = 0
 	if is_running:
@@ -146,11 +147,10 @@ func _physics_process(delta):
 	elif not tired and not is_running:
 		speed = def_speed
 	stamina += delta * 5
-	movement = move_and_slide(movement)
+	#movement = 
+	move_and_collide(movement * delta)
 
 func _process(delta):
-	#$Camera2d/CanvasLayer/Stamina/StaminaBar.init(stamina)
-	#$Camera2d/CanvasLayer/Hp/HpBar.init(hp)
 	pass
 
 func _on_ShootTimer_timeout():
