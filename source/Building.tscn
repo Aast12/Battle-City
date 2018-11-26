@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.8306, 25.1724 )
+extents = Vector2( 10.6123, 25.1724 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.6914, 15.4045 )
+extents = Vector2( 10.7571, 15.4045 )
 
 [node name="StaticBody2D" type="StaticBody2D" index="0"]
 
@@ -44,8 +44,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
-position = Vector2( 3.65916, 108.451 )
-scale = Vector2( 5.54916, -2.73541 )
+position = Vector2( 3.20823, 108.451 )
+scale = Vector2( 5.51626, -2.73541 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -55,8 +55,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0.065033, -12.1127 )
-scale = Vector2( 5.98082, 3.38822 )
+position = Vector2( 0.00128719, -12.1127 )
+scale = Vector2( 5.97616, 3.38822 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

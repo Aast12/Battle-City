@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://melee.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 27.105
+height = 12.2081
+
+[node name="Enemy" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+
+frame = 6
+
+[node name="HurtBox" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+
+position = Vector2( 0, 4 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
+
+[connection signal="body_exited" from="HurtBox" to="." method="_on_HurtBox_body_exited"]
+
+
