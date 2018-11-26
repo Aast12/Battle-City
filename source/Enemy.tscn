@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Art/enemies/sniper_down/sprite_0.png" type="Texture" id=2]
@@ -10,19 +10,13 @@
 [ext_resource path="res://Art/enemies/sniper_down/sprite_6.png" type="Texture" id=8]
 [ext_resource path="res://Art/enemies/sniper_down/sprite_7.png" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 14.3718
 height = 1.7355
 
-[sub_resource type="CapsuleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 14.1063
-height = 4.65184
-
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
@@ -41,14 +35,11 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
 scale = Vector2( 2, 2 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="AttackTimer" type="Timer" parent="." index="1"]
@@ -58,39 +49,14 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="HurtBox" type="Area2D" parent="." index="2"]
-
-position = Vector2( -0.00596619, 2.57127 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
 scale = Vector2( 2, 2 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
-
-scale = Vector2( 2, 2 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "hover"
-frame = 2
 playing = true
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
-
-[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
-
-[connection signal="body_exited" from="HurtBox" to="." method="_on_HurtBox_body_exited"]
 
 

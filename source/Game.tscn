@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://melee.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sniper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
@@ -20,7 +20,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 Enemy = ExtResource( 2 )
@@ -222,6 +222,9 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
 
 [node name="map" parent="." index="5" instance=ExtResource( 11 )]
+
+scale = Vector2( 1.7, 1.7 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
 
