@@ -37,6 +37,7 @@ func _ready():
 
 			elif(map_array[i][j] == 1):							#BUILDING
 				var building_pos = Vector2(i*tileDimension, j*tileDimension)
+				#if Building:
 				var genericBuilding = Building.instance()
 				genericBuilding.init(building_pos)
 				add_child(genericBuilding)
