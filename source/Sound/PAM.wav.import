@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PAM.wav-80ed6dec876007eff47cfe03715d955a.sample"
+
+[deps]
+
+source_file="res://Sound/PAM.wav"
+dest_files=[ "res://.import/PAM.wav-80ed6dec876007eff47cfe03715d955a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

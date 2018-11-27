@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Miami Nights - Extended Theme.ogg-6e1dbcace03443995dafdc31594e3ba3.oggstr"
+
+[deps]
+
+source_file="res://Sound/Miami Nights - Extended Theme.ogg"
+dest_files=[ "res://.import/Miami Nights - Extended Theme.ogg-6e1dbcace03443995dafdc31594e3ba3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

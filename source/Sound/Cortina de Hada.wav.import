@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cortina de Hada.wav-68f9f66b6ada9f1dda150853b9c5d75d.sample"
+
+[deps]
+
+source_file="res://Sound/Cortina de Hada.wav"
+dest_files=[ "res://.import/Cortina de Hada.wav-68f9f66b6ada9f1dda150853b9c5d75d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
