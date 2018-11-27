@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://melee.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Art/GUI/staFill.png" type="Texture" id=9]
 [ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://map.tscn" type="PackedScene" id=11]
+[ext_resource path="res://pauseMenu.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -20,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 Enemy = ExtResource( 2 )
@@ -227,6 +228,8 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
 
 [node name="map" parent="." index="4" instance=ExtResource( 11 )]
+
+[node name="CanvasLayer" parent="." index="5" instance=ExtResource( 12 )]
 
 [connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
 
