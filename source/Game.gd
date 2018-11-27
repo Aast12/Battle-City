@@ -39,7 +39,6 @@ func _ready():
 	$DayCycle.wait_time = day_time
 	$DayCycle.start()
 
-
 func _process(delta):
 	$HUD/HpBar.value = $Player.hp
 	$HUD/StaBar.value = $Player.stamina

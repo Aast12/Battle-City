@@ -36,6 +36,10 @@ func _ready():
 	$ShootTimer.wait_time = fire_rate
 
 func get_input(delta):
+	if Input.is_key_pressed(KEY_P):
+		get_tree().set_pause(true)
+		get_parent().get_node('CanvasLayer').layer = 50
+	
 	movement = Vector2()
 	mouse_pos = $Camera2d.get_global_mouse_position() - global_position
 	if Input.is_key_pressed(KEY_W):
@@ -152,6 +156,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	pass
+		
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
