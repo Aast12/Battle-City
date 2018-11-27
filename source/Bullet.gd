@@ -5,7 +5,8 @@ var movement = Vector2()
 var owner_id
 
 func _ready():
-	pass
+	get_viewport().audio_listener_enable_2d = true
+	$AudioStreamPlayer2D.play()
 
 func start(pos, direction, id):
 	owner_id = id

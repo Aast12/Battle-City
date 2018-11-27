@@ -15,6 +15,8 @@ var aim = load("res://Art/aim.png")
 #var beam = load("res://beam.png")
 
 func _ready():
+	get_viewport().audio_listener_enable_2d = true
+	$Player/AudioStreamPlayer2D.play()
 	for i in range(10):
 		var enemy_pos = Vector2(rand_range(-1000, 1000), rand_range(-1000, 1000))
 		var enemy = Enemy.instance()
