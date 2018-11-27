@@ -5,8 +5,8 @@ extends Panel
 # var b = "textvar"
 
 func _ready():
-	load()
-
+	pass
+	
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
