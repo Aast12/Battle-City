@@ -1,14 +1,16 @@
 extends Area2D
 
-export (int) var speed = 500
+export (int) var speed = 400
 var movement = Vector2()
 var owner_id
+var damage
 
 func _ready():
 	get_viewport().audio_listener_enable_2d = true
 	$AudioStreamPlayer2D.play()
 
-func start(pos, direction, id):
+func start(pos, direction, id, dmg):
+	damage = dmg
 	owner_id = id
 	position = pos
 	rotation = direction + PI / 2
@@ -17,8 +19,10 @@ func start(pos, direction, id):
 func _physics_process(delta):
 	position += movement * delta
 
-
 func _on_Bullet_body_entered(body):
 	if body.id != owner_id and body.id != "Build":
-		body.hp -= randi() % 30 + 10
+		body.hp -= randi() % 30 + damage
+		if body.hp <= 0:
+			pass
+	if body.id != owner_id:
 		queue_free()

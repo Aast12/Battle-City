@@ -9,6 +9,7 @@ var fire_rate = 0.2
 var def_speed = 150
 var speed_factor = 1.5
 var t_speed_factor = 0.5
+var atk = 10
 var hp
 var stamina
 var d_stamina
@@ -38,7 +39,8 @@ func _ready():
 func get_input(delta):
 	if Input.is_key_pressed(KEY_P):
 		get_tree().set_pause(true)
-		get_parent().get_node('CanvasLayer').layer = 50
+		get_parent().get_node('PauseMenu/Panel').show()
+		get_parent().get_node('PauseMenu').layer = 50
 	
 	movement = Vector2()
 	mouse_pos = $Camera2d.get_global_mouse_position() - global_position
@@ -129,7 +131,7 @@ func shoot(pos):
 	var bullet = Bullet.instance()
 	var direction = (pos - global_position).angle() + rand_range(-0.1, 0.1)
 	#bullet.start(global_position + mouse_pos.normalized() * 35, direction)
-	bullet.start(shoot_position.global_position + mouse_pos.normalized() * 10, direction, id)
+	bullet.start(shoot_position.global_position + mouse_pos.normalized() * 10, direction, id, atk)
 	get_parent().add_child(bullet)
 	$ShootTimer.start()
 	can_shoot = false

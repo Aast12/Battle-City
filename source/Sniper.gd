@@ -1,11 +1,18 @@
 extends KinematicBody2D
 
+signal eliminated
+
 var player
 var id = "enemy"
 var hp = 75
 var speed = 150
+var max_speed = 200
+var def_speed = 150
 var movement = Vector2()
 var atk_rate = 2
+var atk = 5
+var max_atk = 10
+var def_atk = 10
 var can_attack = true
 var target_found = false
 var target
@@ -36,15 +43,25 @@ func push_movement(vector, delta):
 func shoot(pos):
 	var bullet = Bullet.instance()
 	var direction = (pos - global_position).angle() + rand_range(-0.1, 0.1)
-	bullet.start(global_position + (pos - global_position).normalized() * 16, direction, id)
+	bullet.start(global_position + (pos - global_position).normalized() * 16, direction, id, atk)
 	get_parent().add_child(bullet)
 	$AttackTimer.start()
 	can_attack = false
+
+func night_boost():
+	speed = max_speed
+	atk = max_atk
+
+func day_revert():
+	speed = def_speed
+	atk = def_atk
+
 
 func _physics_process(delta):
 	if not target_found:
 		move()
 	if hp <= 0:
+		emit_signal("eliminated")
 		queue_free()
 
 func _process(delta):
