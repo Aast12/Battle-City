@@ -1,24 +1,24 @@
-[gd_scene load_steps=14 format=2]
+
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://melee.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sniper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Sound/Guitarra lenta.wav" type="AudioStream" id=6]
-[ext_resource path="res://Art/GUI/barBackground.png" type="Texture" id=7]
-[ext_resource path="res://Art/GUI/emptyBar.png" type="Texture" id=8]
-[ext_resource path="res://Art/GUI/hpFill.png" type="Texture" id=9]
-[ext_resource path="res://Art/GUI/staFill.png" type="Texture" id=10]
-[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://map.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Art/GUI/barBackground.png" type="Texture" id=6]
+[ext_resource path="res://Art/GUI/emptyBar.png" type="Texture" id=7]
+[ext_resource path="res://Art/GUI/hpFill.png" type="Texture" id=8]
+[ext_resource path="res://Art/GUI/staFill.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Building.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 25
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [node name="Game" type="Node" index="0"]
@@ -38,17 +38,6 @@ texture = ExtResource( 4 )
 position = Vector2( 359.283, 208.18 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" index="12"]
-
-stream = ExtResource( 6 )
-volume_db = -0.3
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
 
 [node name="DayCycle" type="Timer" parent="." index="2"]
 
@@ -85,7 +74,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -107,7 +96,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -138,8 +127,8 @@ value = 100.0
 exp_edit = false
 rounded = false
 texture_under = null
-texture_over = ExtResource( 8 )
-texture_progress = ExtResource( 9 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = true
@@ -173,8 +162,8 @@ value = 100.0
 exp_edit = false
 rounded = false
 texture_under = null
-texture_over = ExtResource( 8 )
-texture_progress = ExtResource( 10 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 9 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = true
@@ -233,14 +222,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
 
-[node name="map" parent="." index="5" instance=ExtResource( 12 )]
+Building = ExtResource( 11 )
 
-scale = Vector2( 1.7, 1.7 )
-_sections_unfolded = [ "Transform" ]
-width = 75
-height = 75
-Building = ExtResource( 12 )
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 321.231, 245.471 )
+scale = Vector2( 36.921, 32.8924 )
+texture = ExtResource( 4 )
+
+[node name="Player" parent="." index="1" instance=ExtResource( 5 )]
+
 
 [connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
-
-
