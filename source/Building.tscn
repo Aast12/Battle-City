@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Building.gd" type="Script" id=1]
-[ext_resource path="res://EdificioSample.png" type="Texture" id=2]
+[ext_resource path="res://Art/city/default.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -31,8 +31,8 @@ __meta__ = {
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
-position = Vector2( -3.41224, 24.1284 )
-scale = Vector2( 1.09649, 0.235846 )
+position = Vector2( -3.41224, 24.5113 )
+scale = Vector2( 1.09649, 0.247811 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -55,8 +55,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0.00128719, -12.1127 )
-scale = Vector2( 5.97616, 3.38822 )
+position = Vector2( 0.00128719, -10.0571 )
+scale = Vector2( 5.97616, 3.49991 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
