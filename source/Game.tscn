@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://melee.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Art/GUI/staFill.png" type="Texture" id=9]
 [ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://map.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hospital.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -225,6 +226,9 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fon
 
 scale = Vector2( 1.7, 1.7 )
 _sections_unfolded = [ "Transform" ]
+width = 75
+height = 75
+Building = ExtResource( 12 )
 
 [connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
 
