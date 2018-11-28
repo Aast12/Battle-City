@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Hospital.tscn" type="PackedScene" id=2]
@@ -11,12 +11,13 @@
 [ext_resource path="res://cornerh0.tscn" type="PackedScene" id=9]
 [ext_resource path="res://corner0w.tscn" type="PackedScene" id=10]
 [ext_resource path="res://cornerhw.tscn" type="PackedScene" id=11]
+[ext_resource path="res://grass.tscn" type="PackedScene" id=12]
 
 [node name="map" type="Node2D"]
 
 script = ExtResource( 1 )
-width = 75
-height = 75
+width = 55
+height = 55
 Building = ExtResource( 2 )
 Armoria = ExtResource( 3 )
 Soda = ExtResource( 4 )
@@ -27,5 +28,6 @@ corner00 = ExtResource( 8 )
 cornerh0 = ExtResource( 9 )
 corner0w = ExtResource( 10 )
 cornerhw = ExtResource( 11 )
+grass = ExtResource( 12 )
 
 

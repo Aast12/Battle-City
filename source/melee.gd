@@ -35,9 +35,16 @@ func _physics_process(delta):
 	movement = movement.normalized() * speed
 	rotation = (player.global_position - global_position).angle() + PI / 2 + PI
 	move_and_slide(movement)
+	if position.x <= -96:
+		position.x = -96
+	if position.x >= 10455:
+		position.x = 10455
+	if position.y <= -96:
+		position.y = -96
+	if position.y >= 10446:
+		position.y = 10446
 	if hp <= 0:
-		emit_signal("eliminated")
-		queue_free()
+		destroy()
 
 func _process(delta):
 	if can_attack and target:
@@ -63,3 +70,7 @@ func _on_AttackTimer_timeout():
 
 func _on_HurtBox_body_exited(body):
 	target = null
+
+func destroy():
+	emit_signal("eliminated")
+	queue_free()

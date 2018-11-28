@@ -34,7 +34,14 @@ func move():
 	movement = movement.normalized() * speed
 	rotation = (player.global_position - global_position).angle() + PI / 2 + PI
 	move_and_slide(movement)
-
+	if position.x <= -96:
+		position.x = -96
+	if position.x >= 10455:
+		position.x = 10455
+	if position.y <= -96:
+		position.y = -96
+	if position.y >= 10446:
+		position.y = 10446
 func push_movement(vector, delta):
 	var collision = move_and_collide(vector * delta)
 	if collision and collision.collider.pushable:
@@ -61,8 +68,7 @@ func _physics_process(delta):
 	if not target_found:
 		move()
 	if hp <= 0:
-		emit_signal("eliminated")
-		queue_free()
+		destroy()
 
 func _process(delta):
 	if can_attack and target:
@@ -80,3 +86,7 @@ func _on_ShootRange_body_exited(body):
 	if body.id == "player":
 		target = null
 		target_found = false
+
+func destroy():
+	emit_signal("eliminated")
+	queue_free()

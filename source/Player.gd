@@ -40,7 +40,7 @@ func _ready():
 	$ShootTimer.wait_time = fire_rate
 
 func get_input(delta):
-	if Input.is_key_pressed(KEY_ESCAPE):
+	if Input.is_key_pressed(KEY_P):
 		get_tree().set_pause(true)
 		get_parent().get_node('PauseMenu/Panel').show()
 		get_parent().get_node('PauseMenu').layer = 50
@@ -156,8 +156,15 @@ func _physics_process(delta):
 	elif not tired and not is_running:
 		speed = def_speed
 	stamina += delta * 5
-	#movement = 
 	move_and_collide(movement * delta)
+	if position.x <= -96:
+		position.x = -96
+	if position.x >= 10455:
+		position.x = 10455
+	if position.y <= -96:
+		position.y = -96
+	if position.y >= 10446:
+		position.y = 10446
 
 func _process(delta):
 	if hp <= 0:

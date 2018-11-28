@@ -6,6 +6,7 @@ signal end_wave
 var round_level = 0
 var kill_counter = 0
 var current_kills = 0
+var kill_goal = 0
 var time = 0
 var is_fading = false
 var opacity_val = 1
@@ -15,17 +16,21 @@ var generate = 0
 func init(lvl, current_points):
 	round_level = lvl
 	current_kills = current_points
+	kill_goal = (lvl - 1) * 5 + 10
 	$InitPanel/RoundLabel.set_text("Round " + str(round_level))
-	#$InitPanel/RoundDescription.set_text(description)
+	$InitPanel/RoundDescription.set_text("Eliminate " + str(kill_goal) + " enemies")
 	$InitPanel.show()
 	$ResultsPanel.hide()
 	$ShowTime.wait_time = show_time
 	$ShowTime.start()
-	generate = lvl * 5 + 10
+	generate = lvl * 2 + 10
 	emit_signal("spawn_enemies", generate)
 
 func check(points):
 	kill_counter = points - current_kills
+	if kill_counter >= kill_goal:
+		emit_signal("end_wave")
+		end()
 	if (generate * 3) / 4 <= kill_counter:
 		emit_signal("spawn_enemies", generate / 2)
 		generate = kill_counter + generate / 2

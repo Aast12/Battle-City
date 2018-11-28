@@ -32,5 +32,3 @@ func _process(delta):
 		if hospital_health <= player.max_hp * 0.75:
 			var color = Color(1, 0, 0, 1)
 			modulate = color.lightened(0.8)
-
-	

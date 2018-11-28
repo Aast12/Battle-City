@@ -12,6 +12,7 @@ export (PackedScene) var corner00
 export (PackedScene) var cornerh0
 export (PackedScene) var corner0w
 export (PackedScene) var cornerhw
+export (PackedScene) var grass
 
 var map_array = []
 var tileDimension = 128
@@ -85,6 +86,12 @@ func _ready():
 				var soda = Soda.instance()
 				soda.init(soda_pos)
 				add_child(soda)
+			elif(map_array[i][j] == 0):							#SODA
+				var grass_pos = Vector2(i*tileDimension, j*tileDimension)
+				#if Building:
+				var Grass = grass.instance()
+				Grass.init(grass_pos)
+				add_child(Grass)
 
 func generate_map_array():
 	var arr = []
@@ -93,7 +100,7 @@ func generate_map_array():
 		arr.append([])
 		for j in range(width):
 			randomize()
-			arr[i].append(randi()%4)
+			arr[i].append(randi()%5)
 
 	for p in range(height):
 		for q in range(width):
