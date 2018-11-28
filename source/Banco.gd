@@ -12,6 +12,7 @@ func _on_Area2D_body_entered(body):
 		player = body
 		if Input.is_key_pressed(KEY_Z):
 			is_healing = true
+			
 
 func _process(delta):
 	if player and is_healing and banco_health > 0:

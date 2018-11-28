@@ -3,6 +3,8 @@ extends Node2D
 export (int) var width 
 export (int) var height 
 export (PackedScene) var Building
+export (PackedScene) var Armoria
+export (PackedScene) var Soda
 export (PackedScene) var verticalStreet
 export (PackedScene) var horizontalStreet
 export (PackedScene) var crossRoad
@@ -18,7 +20,11 @@ var id="build"
 func _ready():
 	map_array = generate_map_array()
 	print_map()
-	map_array[((height+1)/2)-1][((width+1)/2)-1] = 0
+	
+	for i in range(3):
+		for j in range(3):
+			map_array[(((height+1)/2)-2)+i][(((width+1)/2)-2)+j] = 0
+	
 	for i in range(height):
 		for j in range(width):
 			if(map_array[i][j] == -4):  	#VERTICAL STREET
@@ -67,8 +73,18 @@ func _ready():
 				var genericBuilding = Building.instance()
 				genericBuilding.init(building_pos)
 				add_child(genericBuilding)
-			
-			
+			elif(map_array[i][j] == 2):							#ARMORIA
+				var armoria_pos = Vector2(i*tileDimension, j*tileDimension)
+				#if Building:
+				var armoria = Armoria.instance()
+				armoria.init(armoria_pos)
+				add_child(armoria)
+			elif(map_array[i][j] == 3):							#SODA
+				var soda_pos = Vector2(i*tileDimension, j*tileDimension)
+				#if Building:
+				var soda = Soda.instance()
+				soda.init(soda_pos)
+				add_child(soda)
 
 func generate_map_array():
 	var arr = []
@@ -77,7 +93,7 @@ func generate_map_array():
 		arr.append([])
 		for j in range(width):
 			randomize()
-			arr[i].append(randi()%3)
+			arr[i].append(randi()%4)
 
 	for p in range(height):
 		for q in range(width):

@@ -6,6 +6,7 @@ const id = "player"
 var max_hp = 100
 var max_stamina = 75
 var fire_rate = 0.2
+var max_fire_rate = 0.01
 var def_speed = 150
 var speed_factor = 1.5
 var t_speed_factor = 0.5
