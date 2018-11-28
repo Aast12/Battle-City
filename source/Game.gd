@@ -58,6 +58,7 @@ func k_counter_increment():
 func game_over():
 	var game_over_scene = load("res://GameOver.tscn").instance()
 	add_child(game_over_scene)
+	get_tree().set_pause(false)
 	
 
 func _ready():

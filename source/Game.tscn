@@ -26,6 +26,7 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 Enemy = ExtResource( 2 )
 Sniper = ExtResource( 3 )
 Round = ExtResource( 4 )
