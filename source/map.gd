@@ -19,7 +19,7 @@ var id="build"
 
 func _ready():
 	map_array = generate_map_array()
-	print_map()
+	#print_map()
 	
 	for i in range(3):
 		for j in range(3):

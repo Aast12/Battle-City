@@ -55,6 +55,11 @@ func generate_enemies(amount):
 func k_counter_increment():
 	kill_counter += 1
 
+func game_over():
+	var game_over_scene = load("res://GameOver.tscn").instance()
+	add_child(game_over_scene)
+	
+
 func _ready():
 	get_viewport().audio_listener_enable_2d = true
 	$Player/AudioStreamPlayer2D.play()
@@ -66,7 +71,6 @@ func _ready():
 	$HUD/StaBar.max_value = $Player.max_stamina
 	$DayCycle.wait_time = day_time
 	$DayCycle.start()
-	
 	#kill_wave(10)
 	var level = SurviveRound.instance()
 	add_child(level)
@@ -74,6 +78,7 @@ func _ready():
 	level.init(1)
 	round_active = true
 	#generate_enemies()
+	$Player.connect("dead", self, "game_over")
 
 func _process(delta):
 	$HUD/HpBar.value = $Player.hp

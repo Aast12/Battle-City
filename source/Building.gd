@@ -13,7 +13,6 @@ func init(pos):
 	position = pos
 
 func _on_Area2D_body_entered(body):
-	print("debug ", body.id)
 	if body.id == "player":
 		player = body
 		is_healing = true
@@ -30,7 +29,6 @@ func _process(delta):
 	if is_healing and (hospital_health >= player.max_hp * 0):
 		hospital_health -= 100 * delta
 		player.hp = min(player.hp + heal_factor * delta, player.max_hp)
-		print(player.hp)
 		if hospital_health <= player.max_hp * 0.75:
 			modulate = Color(1, 0, 0, 1)
 

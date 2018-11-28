@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal dead
+
 export (PackedScene) var Bullet
 
 const id = "player"
@@ -158,8 +160,8 @@ func _physics_process(delta):
 	move_and_collide(movement * delta)
 
 func _process(delta):
-	pass
-		
+	if hp <= 0:
+		emit_signal("dead")
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
