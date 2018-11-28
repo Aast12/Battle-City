@@ -1,6 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Polygon2D" type="Polygon2D" index="0"]
+[ext_resource path="res://story.tscn" type="PackedScene" id=1]
+
+[node name="Polygon2D" type="Polygon2D"]
 
 polygon = PoolVector2Array( 19, 18.1106, 19, 580.111, 988, 580.111, 990, 21.1106 )
 uv = PoolVector2Array(  )
@@ -15,59 +17,6 @@ texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 359.0
-margin_top = 126.0
-margin_right = 724.0
-margin_bottom = 508.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = true
-bbcode_text = "En 1950, un pueblo rural encontró una manera de convocar una dimensión alterna.
-
-No obstante, los organismos tomaron control del pueblo y se tuvo que evacuar.
-
-El gobierno de los Estados Unidos ha tratado de mantener control de la situación.
-
-Pero si no existe acción pronta, una invasión seria inminente.
-
-Por esto, se ha designado enviar a la persona con más valentía de la humanidad.
-
-Esta persona seria enviada hacia la recientemente llamada...
-
-Battle City
-"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "En 1950, un pueblo rural encontró una manera de convocar una dimensión alterna.
-
-No obstante, los organismos tomaron control del pueblo y se tuvo que evacuar.
-
-El gobierno de los Estados Unidos ha tratado de mantener control de la situación.
-
-Pero si no existe acción pronta, una invasión seria inminente.
-
-Por esto, se ha designado enviar a la persona con más valentía de la humanidad.
-
-Esta persona seria enviada hacia la recientemente llamada...
-
-Battle City
-"
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode" ]
+[node name="Panel" parent="." index="0" instance=ExtResource( 1 )]
 
 
