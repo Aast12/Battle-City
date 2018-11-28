@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MenuMargin.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Art/logo.png" type="Texture" id=3]
+[ext_resource path="res://story.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Art/logo.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 64
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="MainMenu" type="Node"]
@@ -35,6 +36,7 @@ custom_constants/margin_left = 120
 custom_constants/margin_bottom = 80
 script = ExtResource( 1 )
 _sections_unfolded = [ "Margin", "Pause", "custom_constants" ]
+story = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuMargin" index="0"]
 
@@ -167,7 +169,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 0
 
 [connection signal="pressed" from="MenuMargin/HBoxContainer/Selectors/NewGameLabel" to="MenuMargin" method="_on_NewGameLabel_pressed"]
