@@ -3,9 +3,9 @@ extends StaticBody2D
 var id = "Build"
 var player
 var is_healing = false
-var heal_factor = 100
+var heal_factor = 50
 var hospital_health = 100
-var hospital_regen_rate = 100
+var hospital_regen_rate = 50
 
 signal building_function_available
 
@@ -30,6 +30,7 @@ func _process(delta):
 		hospital_health -= 100 * delta
 		player.hp = min(player.hp + heal_factor * delta, player.max_hp)
 		if hospital_health <= player.max_hp * 0.75:
-			modulate = Color(1, 0, 0, 1)
+			var color = Color(1, 0, 0, 1)
+			modulate = color.lightened(0.8)
 
 	

@@ -12,7 +12,7 @@
 [ext_resource path="res://corner0w.tscn" type="PackedScene" id=10]
 [ext_resource path="res://cornerhw.tscn" type="PackedScene" id=11]
 
-[node name="map" type="Node2D" index="0"]
+[node name="map" type="Node2D"]
 
 script = ExtResource( 1 )
 width = 75
