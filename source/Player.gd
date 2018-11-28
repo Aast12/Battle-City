@@ -40,7 +40,7 @@ func _ready():
 	$ShootTimer.wait_time = fire_rate
 
 func get_input(delta):
-	if Input.is_key_pressed(KEY_P):
+	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().set_pause(true)
 		get_parent().get_node('PauseMenu/Panel').show()
 		get_parent().get_node('PauseMenu').layer = 50
