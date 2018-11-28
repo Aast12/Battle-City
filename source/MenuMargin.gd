@@ -5,7 +5,8 @@ extends MarginContainer
 # var b = "textvar"
 
 func _ready():
-	pass
+	get_viewport().audio_listener_enable_2d = true
+	$AudioStreamPlayer2D.play()
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

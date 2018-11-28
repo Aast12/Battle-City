@@ -25,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
 position = Vector2( -0.623667, -0.0831556 )
 scale = Vector2( 0.5, 0.5 )
@@ -54,6 +54,7 @@ autostart = false
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "hover"
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform" ]
 

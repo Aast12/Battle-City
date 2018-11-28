@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MenuMargin.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Art/logo.png" type="Texture" id=3]
+[ext_resource path="res://Sound/Miami Nights - Extended Theme.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -12,7 +13,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" index="0"]
 
 pause_mode = 2
 _sections_unfolded = [ "Pause" ]
@@ -169,6 +170,17 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 stretch_mode = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MenuMargin" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="pressed" from="MenuMargin/HBoxContainer/Selectors/NewGameLabel" to="MenuMargin" method="_on_NewGameLabel_pressed"]
 

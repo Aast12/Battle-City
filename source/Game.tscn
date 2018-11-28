@@ -6,7 +6,7 @@
 [ext_resource path="res://BaseRound.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SurviveRound.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sound/Guitarra lenta.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound/The Way Out.wav" type="AudioStream" id=7]
 [ext_resource path="res://Art/GUI/barBackground.png" type="Texture" id=8]
 [ext_resource path="res://Art/GUI/emptyBar.png" type="Texture" id=9]
 [ext_resource path="res://Art/GUI/hpFill.png" type="Texture" id=10]
@@ -23,7 +23,7 @@ use_filter = false
 font_data = ExtResource( 12 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
