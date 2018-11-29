@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Coin.gd" type="Script" id=1]
+[ext_resource path="res://Art/objects/coin/sprite_0.png" type="Texture" id=2]
+[ext_resource path="res://Art/objects/coin/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://Art/objects/coin/sprite_2.png" type="Texture" id=4]
+[ext_resource path="res://Art/objects/coin/sprite_3.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 15.2684
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+} ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 32
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Coin" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="AddLabel" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -13.0
+margin_top = -9.0
+margin_right = 13.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "+20"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]
+
+

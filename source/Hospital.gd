@@ -20,15 +20,14 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body.id == "player":
 		is_healing = false
-		hospital_health += 10
 
 func restart(_player):
-	hospital_health = player.max_hp * 0.75
+	hospital_health = _player.max_hp * 0.75
 		
 func _process(delta):
-	if is_healing and (hospital_health >= player.max_hp * 0):
-		hospital_health -= 100 * delta
+	if is_healing and (hospital_health >= 0):
+		hospital_health -= heal_factor * delta
 		player.hp = min(player.hp + heal_factor * delta, player.max_hp)
-		if hospital_health <= player.max_hp * 0.75:
+		if hospital_health <= 0:
 			var color = Color(1, 0, 0, 1)
 			modulate = color.lightened(0.8)

@@ -5,6 +5,7 @@ signal dead
 export (PackedScene) var Bullet
 
 const id = "player"
+var currency = 0
 var max_hp = 100
 var max_stamina = 75
 var fire_rate = 0.2

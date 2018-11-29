@@ -5,6 +5,8 @@ export (PackedScene) var Sniper
 
 var SurviveRound = load("res://SurviveRound.tscn")
 var EliminateRound = load("res://EliminateRound.tscn")
+
+var Coin = load("res://Coin.tscn")
  
 var round_set = [SurviveRound, EliminateRound]
 
@@ -37,6 +39,7 @@ func _ready():
 	#new_round(round_set[0])
 
 func new_round(RoundType):
+	#generate_coins()
 	var level = RoundType.instance()
 	add_child(level)
 	level.connect("spawn_enemies", self, "generate_enemies")
@@ -54,6 +57,13 @@ func end_function():
 
 func mock_function(arg1, arg2 = null, arg3 = null):
 	pass
+
+func generate_coins():
+	for i in range(10):
+		var coin = Coin.instance()
+		var pos = Vector2(rand_range(4500, 5000), rand_range(4500, 5000))
+		add_child(coin)
+		coin.init(pos)
 
 func round_manager():
 	if not round_active and not round_waiting:
