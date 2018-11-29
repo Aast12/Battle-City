@@ -40,10 +40,11 @@ func _ready():
 	$ShootTimer.wait_time = fire_rate
 
 func get_input(delta):
-	if Input.is_key_pressed(KEY_P):
+	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().set_pause(true)
 		get_parent().get_node('PauseMenu/Panel').show()
-		get_parent().get_node('PauseMenu').layer = 50
+		get_parent().get_node('PauseMenu/ColorRect').show()
+		#get_parent().get_node('PauseMenu').layer = 50
 	
 	movement = Vector2()
 	mouse_pos = $Camera2d.get_global_mouse_position() - global_position
@@ -159,12 +160,12 @@ func _physics_process(delta):
 	move_and_collide(movement * delta)
 	if position.x <= -96:
 		position.x = -96
-	if position.x >= 10455:
-		position.x = 10455
+	if position.x >= 10460:
+		position.x = 10460
 	if position.y <= -96:
 		position.y = -96
-	if position.y >= 10446:
-		position.y = 10446
+	if position.y >= 10445:
+		position.y = 10445
 
 func _process(delta):
 	if hp <= 0:

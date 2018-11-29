@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Enemy = ExtResource( 2 )
@@ -242,6 +242,10 @@ autostart = false
 _sections_unfolded = [ "Pause" ]
 
 [node name="PauseMenu" parent="." index="6" instance=ExtResource( 12 )]
+
+pause_mode = 2
+layer = 50
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]
 

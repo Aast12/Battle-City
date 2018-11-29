@@ -33,7 +33,7 @@ func _ready():
 	$DayCycle.wait_time = day_time
 	$DayCycle.start()
 	$Player.connect("dead", self, "game_over")
-	$Player.position = Vector2(5184,5184)
+	$Player.position = Vector2(4992, 4992)
 	#new_round(round_set[0])
 
 func new_round(RoundType):
@@ -74,14 +74,19 @@ func generate_enemies(amount):
 	#var amount = 10
 	#melee enemies
 	for i in range(amount):
-		var rand_x = rand_range($Player.global_position.x + 300, $Player.global_position.x + 500)
-		var rand_y = rand_range($Player.global_position.y + 300, $Player.global_position.y + 500)
+		randomize()
+		var rand_x = rand_range(300, 1000)
+		var rand_y = rand_range(300, 1000)
 		var x_fact = rand_range(0,100)
 		var y_fact = rand_range(0,100)
 		if x_fact > 50:
-			rand_x =rand_x * (-1) 
+			rand_x = $Player.global_position.x - rand_x 
+		else:
+			rand_x = $Player.global_position.x + rand_x 
 		if y_fact > 50:
-			rand_y =rand_y * (-1) 
+			rand_y = $Player.global_position.y - rand_y
+		else:
+			rand_y = $Player.global_position.x + rand_y
 		var enemy_pos = Vector2(rand_x, rand_y)
 		var enemy = Enemy.instance()
 		enemy.init($Player, enemy_pos)
@@ -89,15 +94,20 @@ func generate_enemies(amount):
 		add_child(enemy)
 		enemy.connect("eliminated", self, "k_counter_increment")
 	#sniper enemies
-	for i in range(amount):
-		var rand_x = rand_range($Player.global_position.x + 300, $Player.global_position.x + 500)
-		var rand_y = rand_range($Player.global_position.y + 300, $Player.global_position.y + 500)
+	for i in range(amount * 0.5):
+		randomize()
+		var rand_x = rand_range(600, 3000)
+		var rand_y = rand_range(600, 3000)
 		var x_fact = rand_range(0,100)
 		var y_fact = rand_range(0,100)
 		if x_fact > 50:
-			rand_x =rand_x * (-1) 
+			rand_x = $Player.global_position.x - rand_x 
+		else:
+			rand_x = $Player.global_position.x + rand_x 
 		if y_fact > 50:
-			rand_y =rand_y * (-1) 
+			rand_y = $Player.global_position.y - rand_y
+		else:
+			rand_y = $Player.global_position.x + rand_y
 		var enemy_pos = Vector2(rand_x, rand_y)
 		var enemy = Sniper.instance()
 		enemy.init($Player, enemy_pos)

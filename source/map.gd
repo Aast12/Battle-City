@@ -3,6 +3,7 @@ extends Node2D
 export (int) var width 
 export (int) var height 
 export (PackedScene) var Building
+export (PackedScene) var Hospital
 export (PackedScene) var Armoria
 export (PackedScene) var Soda
 export (PackedScene) var verticalStreet
@@ -24,7 +25,7 @@ func _ready():
 	
 	for i in range(3):
 		for j in range(3):
-			map_array[(((height+1)/2)-2)+i][(((width+1)/2)-2)+j] = 0
+			map_array[(((height)/2)-2)+i][(((width)/2)-2)+j] = 0
 	
 	for i in range(height):
 		for j in range(width):
@@ -86,7 +87,13 @@ func _ready():
 				var soda = Soda.instance()
 				soda.init(soda_pos)
 				add_child(soda)
-			elif(map_array[i][j] == 0):							#SODA
+			elif(map_array[i][j] == 4):							#HOSPITAL
+				var hospital_pos = Vector2(i*tileDimension, j*tileDimension)
+				#if Building:
+				var hospital = Hospital.instance()
+				hospital.init(hospital_pos)
+				add_child(hospital)
+			elif(map_array[i][j] == 0):							#GRASS
 				var grass_pos = Vector2(i*tileDimension, j*tileDimension)
 				#if Building:
 				var Grass = grass.instance()
@@ -100,7 +107,17 @@ func generate_map_array():
 		arr.append([])
 		for j in range(width):
 			randomize()
-			arr[i].append(randi()%5)
+			var rand_val = randi() % 100
+			if rand_val < 35:
+				arr[i].append(1)
+			elif rand_val >= 35 and rand_val < 55:
+				arr[i].append(2)
+			elif rand_val >= 55 and rand_val < 70:
+				arr[i].append(3)
+			elif rand_val >= 70 and rand_val < 85:
+				arr[i].append(4)
+			else:
+				arr[i].append(0)
 
 	for p in range(height):
 		for q in range(width):

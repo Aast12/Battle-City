@@ -35,7 +35,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="PauseMenu" type="CanvasLayer" index="0"]
+[node name="PauseMenu" type="CanvasLayer"]
 
 layer = -50
 offset = Vector2( 0, 0 )
@@ -103,7 +103,7 @@ group = null
 text = "Continue"
 flat = true
 align = 1
-_sections_unfolded = [ "Material", "Pause", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Material", "Pause", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="Save" type="Button" parent="Panel" index="1"]
 
