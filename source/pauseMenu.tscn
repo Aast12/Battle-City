@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://pauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/determinationsansweb-webfont.ttf" type="DynamicFontData" id=2]
@@ -27,15 +27,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=4]
-
-size = 40
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" index="0"]
 
 layer = -50
 offset = Vector2( 0, 0 )
@@ -85,9 +77,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 53.0
-margin_top = 60.0
+margin_top = 87.0
 margin_right = 209.0
-margin_bottom = 110.0
+margin_bottom = 137.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -105,7 +97,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Material", "Pause", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Save" type="Button" parent="Panel" index="1"]
+[node name="Quit" type="Button" parent="Panel" index="1"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -113,9 +105,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 60.0
-margin_top = 130.0
+margin_top = 155.0
 margin_right = 200.0
-margin_bottom = 180.0
+margin_bottom = 205.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -128,40 +120,12 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Save"
-flat = true
-align = 1
-_sections_unfolded = [ "Pause", "Rect", "custom_fonts" ]
-
-[node name="Quit" type="Button" parent="Panel" index="2"]
-
-pause_mode = 2
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 60.0
-margin_top = 200.0
-margin_right = 200.0
-margin_bottom = 250.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Quit"
 flat = true
 align = 1
 _sections_unfolded = [ "Pause", "Rect", "custom_fonts" ]
 
-[node name="PAUSE" type="Label" parent="Panel" index="3"]
+[node name="PAUSE" type="Label" parent="Panel" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -177,7 +141,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "PAUSE"
 percent_visible = 1.0
 lines_skipped = 0
@@ -185,8 +149,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="pressed" from="Panel/Continue" to="." method="_on_Continue_pressed"]
-
-[connection signal="pressed" from="Panel/Save" to="." method="_on_Save_pressed"]
 
 [connection signal="pressed" from="Panel/Quit" to="." method="_on_Quit_pressed"]
 

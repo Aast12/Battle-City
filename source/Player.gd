@@ -10,10 +10,10 @@ var max_hp = 100
 var max_stamina = 75
 var fire_rate = 0.2
 var max_fire_rate = 0.01
-var def_speed = 150
+var def_speed = 160
 var speed_factor = 1.5
 var t_speed_factor = 0.5
-var atk = 10
+var atk = 30
 var hp
 var stamina
 var d_stamina

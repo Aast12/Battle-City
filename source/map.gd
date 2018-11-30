@@ -75,24 +75,28 @@ func _ready():
 				var genericBuilding = Building.instance()
 				genericBuilding.init(building_pos)
 				add_child(genericBuilding)
+
 			elif(map_array[i][j] == 2):							#ARMORIA
 				var armoria_pos = Vector2(i*tileDimension, j*tileDimension)
 				#if Building:
 				var armoria = Armoria.instance()
 				armoria.init(armoria_pos)
 				add_child(armoria)
+				#armoria.add_to_group("buildings")
 			elif(map_array[i][j] == 3):							#SODA
 				var soda_pos = Vector2(i*tileDimension, j*tileDimension)
 				#if Building:
 				var soda = Soda.instance()
 				soda.init(soda_pos)
 				add_child(soda)
+				soda.add_to_group("buildings")
 			elif(map_array[i][j] == 4):							#HOSPITAL
 				var hospital_pos = Vector2(i*tileDimension, j*tileDimension)
 				#if Building:
 				var hospital = Hospital.instance()
 				hospital.init(hospital_pos)
 				add_child(hospital)
+				hospital.add_to_group("buildings")
 			elif(map_array[i][j] == 0):							#GRASS
 				var grass_pos = Vector2(i*tileDimension, j*tileDimension)
 				#if Building:

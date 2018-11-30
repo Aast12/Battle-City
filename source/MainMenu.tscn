@@ -12,7 +12,10 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="MainMenu" type="Node" index="0"]
+[node name="MainMenu" type="Node"]
+
+pause_mode = 2
+_sections_unfolded = [ "Pause" ]
 
 [node name="MenuMargin" type="MarginContainer" parent="." index="0"]
 

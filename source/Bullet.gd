@@ -21,7 +21,7 @@ func _physics_process(delta):
 
 func _on_Bullet_body_entered(body):
 	if body.id != owner_id and body.id != "Build":
-		body.hp -= randi() % 30 + damage
+		body.hp -= rand_range(5, damage)
 		if body.hp <= 0:
 			pass
 	if body.id != owner_id:

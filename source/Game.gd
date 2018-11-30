@@ -10,7 +10,7 @@ var Coin = load("res://Coin.tscn")
  
 var round_set = [SurviveRound, EliminateRound]
 
-var day_time = 300
+var day_time = 180
 var is_day = true
 var day_transition = false
 var nightColor = Color(128.0 / 255, 151.0 / 255, 188.0 / 255, 1)
@@ -85,8 +85,8 @@ func generate_enemies(amount):
 	#melee enemies
 	for i in range(amount):
 		randomize()
-		var rand_x = rand_range(300, 1000)
-		var rand_y = rand_range(300, 1000)
+		var rand_x = rand_range(350, 1500)
+		var rand_y = rand_range(350, 1500)
 		var x_fact = rand_range(0,100)
 		var y_fact = rand_range(0,100)
 		if x_fact > 50:
@@ -152,6 +152,7 @@ func _on_DayCycle_timeout():
 		 get_tree().call_group("enemies", "night_boost")
 	else:
 		get_tree().call_group("enemies", "day_revert")
+		get_tree().call_group("buildings", "restart")
 
 
 func _on_RoundWait_timeout():

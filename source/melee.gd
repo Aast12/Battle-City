@@ -4,13 +4,13 @@ signal eliminated
 
 var player
 var id = "enemy"
-var hp = 75
-var speed = 150
-var max_speed = 200
-var def_speed = 150
+var hp = 50
+var speed = 145
+var max_speed = 185
+var def_speed = 145
 var movement = Vector2()
-var atk = 5
-var max_atk = 10
+var atk = 12
+var max_atk = 20
 var def_atk = 10
 var atk_rate = 1.2
 var can_attack = true
@@ -73,4 +73,5 @@ func _on_HurtBox_body_exited(body):
 
 func destroy():
 	emit_signal("eliminated")
-	queue_free()
+	#queue_free()
+	call_deferred("queue_free")
